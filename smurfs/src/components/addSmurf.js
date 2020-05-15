@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {addSmurf} from '../store/action/index';
+import {addSmurf, fetchSmurf} from '../store/action/index';
 
 const AddSmurfs = props => {
     console.log({props})
@@ -22,18 +22,19 @@ const AddSmurfs = props => {
 
    const submitSmurf = event => {
         event.preventDefault();
-        props.addSmurf({smurfies});
+        props.addSmurf(smurfies);
         setSmurfies({
             name: '',
             height:'',
             age:'',
         });
+        props.fetchSmurf()
     };
   
   return (
       <div>
           
-          <form onSubmit={event => submitSmurf(event)}>
+          <form onSubmit={submitSmurf}>
           <input onChange= {change} type= 'text' name= 'name' value={smurfies.name} />
           <input onChange= {change} type= 'text' name= 'height' value={smurfies.height} />
           <input onChange= {change} type= 'text' name= 'age' value={smurfies.age} />
@@ -51,4 +52,4 @@ const mapStateToProps = state => ({
     error: state.error,
 })
 
-export default connect(mapStateToProps, {addSmurf}) (AddSmurfs);
+export default connect(mapStateToProps, {addSmurf, fetchSmurf}) (AddSmurfs);

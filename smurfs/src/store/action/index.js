@@ -16,7 +16,7 @@ export const fetchSmurf = () => {
         // console.log(response.data)
         dispatch({type: FETCH_SMURF_SUCCESS, payload:response.data})
     })
-    .catch(err => dispatch({FETCH_SMURF_FAILURE, payload: `${err.message}`}))
+    .catch(err => dispatch({type: FETCH_SMURF_FAILURE, payload: `${err.message}`}))
 }
 }
 
@@ -29,6 +29,6 @@ export const addSmurf = (smurfies) => {
         // console.log(response.data)
         dispatch({type: ADD_SMURF_SUCCESS, payload:response.data})
     })
-    .catch(err => dispatch({ADD_SMURF_FAILURE, payload: `${err.message}`}))
+    .catch(err => dispatch({type: ADD_SMURF_FAILURE, payload: `${err.message}`}))
 }
 }
